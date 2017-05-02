@@ -5,7 +5,7 @@ import (
 
 	"io/ioutil"
 
-	"logtest/model"
+	"littleform/model"
 
 	"github.com/astaxie/beego"
 	"github.com/mitchellh/mapstructure"
