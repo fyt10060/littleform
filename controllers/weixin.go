@@ -3,14 +3,10 @@ package controllers
 import (
 	"fmt"
 
-	"io/ioutil"
-
 	"littleform/model"
 
 	"github.com/astaxie/beego"
 	"github.com/mitchellh/mapstructure"
-	"github.com/weixinhost/yar.go"
-	"github.com/weixinhost/yar.go/server"
 )
 
 type WeixinController struct {
@@ -69,23 +65,25 @@ func (this *WeixinController) Post() {
 	r := c.Request
 	w := c.ResponseWriter
 
-	body, err := ioutil.ReadAll(r.Body)
-	fmt.Printf("request medthod:%s\n", r.Method)
-	fmt.Printf("request url: %s\n", r.URL.String())
+	NewYarServer(&Weixin{}, "weixin", "Weixin", r, w)
 
-	if err != nil {
-		fmt.Printf("body err:%s\n", err)
-	}
-	fmt.Printf("body:%x\n", body)
+	// body, err := ioutil.ReadAll(r.Body)
+	// fmt.Printf("request medthod:%s\n", r.Method)
+	// fmt.Printf("request url: %s\n", r.URL.String())
 
-	s := server.NewServer(&Weixin{})
-	s.Opt.LogLevel = yar.LogLevelDebug | yar.LoglevelNormal | yar.LogLevelError
-	s.Register("weixin", "Weixin")
+	// if err != nil {
+	// 	fmt.Printf("body err:%s\n", err)
+	// }
+	// fmt.Printf("body:%x\n", body)
 
-	err1 := s.Handle(c.Input.RequestBody, w)
-	if err1 != nil {
-		fmt.Printf("handle err:%s\n", err1)
-	}
+	// s := server.NewServer(&Weixin{})
+	// s.Opt.LogLevel = yar.LogLevelDebug | yar.LoglevelNormal | yar.LogLevelError
+	// s.Register("weixin", "Weixin")
+
+	// err1 := s.Handle(c.Input.RequestBody, w)
+	// if err1 != nil {
+	// 	fmt.Printf("handle err:%s\n", err1)
+	// }
 
 	//	w.Write([]byte("11313"))
 }

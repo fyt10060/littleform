@@ -21,13 +21,6 @@ func Struct2Map(obj interface{}) map[string]interface{} {
 }
 
 func GetReplyWithSendMsg(oMsg WeiXinMessageInfo, content string) (xmlString string) {
-	//	var time string
-	//	if reflect.TypeOf(oMsg.CreateTime) == string {
-	//		time = oMsg.CreateTime
-	//	} else {
-	//		time = strconv.FormatInt(oMsg.CreateTime, 10)
-	//	}
-	//	time := strconv.FormatInt(oMsg.CreateTime, 10)
 	time := oMsg.CreateTime
 	reply := BaseReply{
 		FromUserName: CDATAText{oMsg.ToUserName},
