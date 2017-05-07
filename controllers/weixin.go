@@ -65,7 +65,13 @@ func (this *WeixinController) Post() {
 	r := c.Request
 	w := c.ResponseWriter
 
-	NewYarServer(&Weixin{}, "weixin", "Weixin", r, w)
+	register := RegisterList{
+		List: []RegisterPair{
+			{"weixin", "Weixin"},
+		},
+	}
+
+	NewYarServer(&Weixin{}, register, r, w)
 
 	// body, err := ioutil.ReadAll(r.Body)
 	// fmt.Printf("request medthod:%s\n", r.Method)
